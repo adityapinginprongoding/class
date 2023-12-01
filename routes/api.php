@@ -16,12 +16,12 @@ use App\Http\Controllers\API\ProductCategoryController;
 | be assigned to the "api" middleware group. Make something great!
 |
 */
-
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
-
 route::get('products', [ProductController::class, 'all']);
-route::get('products', [ProductCategoryController::class, 'all']);
+route::get('categories', [ProductCategoryController::class, 'all']);
 
-route::get('register', [UserController::class, 'register']);
+route::post('register', [UserController::class, 'register']);
+route::post('login', [UserController::class, 'login']);
+
+Route::middleware('auth:sanctum')->group(function(){
+ Route::get('user', [UserController::class, 'fetch']);
+});
