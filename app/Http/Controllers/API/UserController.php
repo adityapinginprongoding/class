@@ -89,4 +89,17 @@ class UserController extends Controller
     {
         return ResponseFormatter::success($request->user(),'Data profil user berhasil di ambil');
     }
+    public function updatePofil(Request $request)
+    {
+        $data = $request->all();
+
+        $user = Auth::user();
+        $user->update($data);
+        return ResponseFormatter::success($user, 'profile update');
+    }
+    public function logout(Request $request)
+    {
+        $token = $request->user()->currentAccessToken()->delete();
+        return ResponseFormatter::success($token,'Token Revoked');
+    }
 }
