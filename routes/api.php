@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\UserController;
 use App\Http\Controllers\API\ProductController;
 use App\Http\Controllers\API\ProductCategoryController;
+use App\Http\Controllers\API\TransactionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,4 +29,5 @@ Route::middleware('auth:sanctum')->group(function(){
  Route::post('logout', [UserController::class, 'logout']);
 
  Route::get('transaction', [TrasactionController::class, 'all']);
+ Route::get('checkout', [TransactionController::class, 'checkout']);
 });
